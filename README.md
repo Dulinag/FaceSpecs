@@ -1,4 +1,4 @@
 # Face Specs
 
-## `navigator.getUserMedia`
+## https://dulinag.github.io/FaceSpecs/
 
