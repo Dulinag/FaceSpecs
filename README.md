@@ -1,4 +1,4 @@
 # Face Specs
 
-## https://dulinag.github.io/FaceSpecs/
+## https://face-specs.vercel.app/
 
