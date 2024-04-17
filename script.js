@@ -109,14 +109,6 @@ video.addEventListener('play', async () => {
 });
 
 function loadLabeledImages() {
-    // Used to check files
-  // const fs = require('fs');
-  // const dir = './labeled_images';
-  // fs.readdir(dir, (err, files) => {
-  //   console.log(files);
-  //   console.log(files.length);
-  // });
-
   const labels = ['Anthony'];
   return Promise.all(
     labels.map(async label => {
