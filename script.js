@@ -7,7 +7,8 @@ Promise.all([
   faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
   faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
   faceapi.nets.faceExpressionNet.loadFromUri('/models'),
-  faceapi.nets.ageGenderNet.loadFromUri('/models')
+  faceapi.nets.ageGenderNet.loadFromUri('/models'),
+  faceapi.nets.ssdMobilenetv1.loadFromUri('/models'),
 ]).then(startVideo);
 
 
@@ -32,25 +33,31 @@ function calculateSmileScore(detection) {
 
 
 // Second block of code
-video.addEventListener('play', () => {
+video.addEventListener('play', async () => {
   const canvas = faceapi.createCanvasFromMedia(video);
   document.body.append(canvas);
   const displaySize = { width: video.width, height: video.height };
   faceapi.matchDimensions(canvas, displaySize);
 
+  const LabeledFaceDescriptors = await loadLabeledImages();
+  const faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
+
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
                                      .withFaceLandmarks()
                                      .withFaceExpressions()
-                                     .withAgeAndGender();
+                                     .withAgeAndGender()
+                                     .withFaceDescriptors();
 
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
+
+    const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor));
 
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw face detections and landmarks
     faceapi.draw.drawDetections(canvas, resizedDetections);
-    resizedDetections.forEach(async detection => {
+    resizedDetections.forEach(async (detection, i) => {
       const { landmarks } = detection;
       faceapi.draw.drawFaceLandmarks(canvas, landmarks);
 
@@ -61,6 +68,8 @@ video.addEventListener('play', () => {
         [`Smile Score: ${smileScore.toFixed(2)}`], // Display smile score on canvas
         { x: textX, y: textY }
       ).draw(canvas);
+      const box = resizedDetections[i].detection.box;
+      new faceapi.draw.DrawBox(box, { label: results[i].toString() }).draw(canvas);
 
     });
 
@@ -98,3 +107,27 @@ video.addEventListener('play', () => {
 
   
 });
+
+function loadLabeledImages() {
+    // Used to check files
+  // const fs = require('fs');
+  // const dir = './labeled_images';
+  // fs.readdir(dir, (err, files) => {
+  //   console.log(files);
+  //   console.log(files.length);
+  // });
+
+  const labels = ['Anthony'];
+  return Promise.all(
+    labels.map(async label => {
+      const descriptions = []
+      for (let i = 1; i <= 2; i++) {
+        const img = await faceapi.fetchImage(`http://127.0.0.1:5500//labeled_images/${label}/${i}.jpg`);
+        const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
+        descriptions.push(detections.descriptor);
+      }
+
+      return new faceapi.LabeledFaceDescriptors(label, descriptions);
+    })
+  )
+}
