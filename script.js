@@ -112,6 +112,7 @@ video.addEventListener('play', async () => {
 
 });
 
+// This is a really bad way of loading the labeled images
 function loadLabeledImages() {
   const labels = ['Anthony'];
   return Promise.all(
