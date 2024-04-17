@@ -57,7 +57,7 @@ video.addEventListener('play', async () => {
 
     // Draw face detections and landmarks
     faceapi.draw.drawDetections(canvas, resizedDetections);
-    resizedDetections.forEach(async (detection, i) => {
+    resizedDetections.forEach(async detection => {
       const { landmarks } = detection;
       faceapi.draw.drawFaceLandmarks(canvas, landmarks);
 
@@ -68,8 +68,6 @@ video.addEventListener('play', async () => {
         [`Smile Score: ${smileScore.toFixed(2)}`], // Display smile score on canvas
         { x: textX, y: textY }
       ).draw(canvas);
-      const box = resizedDetections[i].detection.box;
-      new faceapi.draw.DrawBox(box, { label: results[i].toString() }).draw(canvas);
 
     });
 
@@ -103,9 +101,15 @@ video.addEventListener('play', async () => {
         { x: textX, y: textY }
       ).draw(canvas);
     });
+
+    // Draw expressions (happy or sad) for each detected face
+    resizedDetections.forEach((detection, i) => {
+      const box = detection.detection.box;
+      new faceapi.draw.DrawBox(box, { label: results[i].toString() }).draw(canvas);
+    });
+
   }, 100);
 
-  
 });
 
 function loadLabeledImages() {
