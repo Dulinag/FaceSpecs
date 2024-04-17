@@ -43,6 +43,9 @@ video.addEventListener('play', async () => {
   const faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
 
   setInterval(async () => {
+    let rect = video.getBoundingClientRect();
+    canvas.style.top = rect.top + 'px';
+    canvas.style.left = rect.left + 'px';
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
                                      .withFaceLandmarks()
                                      .withFaceExpressions()
