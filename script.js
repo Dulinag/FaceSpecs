@@ -39,8 +39,8 @@ video.addEventListener('play', async () => {
   const displaySize = { width: video.width, height: video.height };
   faceapi.matchDimensions(canvas, displaySize);
 
-  const LabeledFaceDescriptors = await loadLabeledImages();
-  const faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
+  let LabeledFaceDescriptors = await loadLabeledImages();
+  let faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
 
   setInterval(async () => {
     let rect = video.getBoundingClientRect();
@@ -130,4 +130,21 @@ function loadLabeledImages() {
       return new faceapi.LabeledFaceDescriptors(label, descriptions);
     })
   )
+}
+
+function addEntry() {
+  const imageInput = document.getElementById('imageInput');
+  const label = document.getElementById('textInput').value;
+  const descriptions = [];
+  
+  // Create image previews
+  Array.from(imageInput.files).forEach(file => {
+    const reader = new FileReader();
+      reader.onload = async function(e) {
+          const img = await faceapi.fetchImage(e.target.result);
+          const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
+          descriptions.push(detections.descriptor);
+      };
+      reader.readAsDataURL(file);
+  });
 }

@@ -24,6 +24,14 @@
   </style>
 </head>
 <body>
+  <form id="inputForm">
+    <label for="textInput">Enter a string:</label>
+    <input type="text" id="textInput" name="textInput">
+    <input type="file" id="imageInput" name="imageInput" accept="image/*" multiple>
+    <!-- <div id="imagePreviews"></div> -->
+    <button type="button" onclick="addEntry()">Add Entry</button>
+    <!-- <button type="submit" onclick="addEntry()">Submit</button> -->
+  </form>
   <video id="video" width="720" height="560" autoplay muted></video>
 </body>
 </html>
