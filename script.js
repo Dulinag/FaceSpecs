@@ -145,15 +145,17 @@ async function addEntry() {
   let labelDescriptor = null;
 
   // Create image previews
-  Array.from(imageInput.files).forEach(file => {
+  await Promise.all(Array.from(imageInput.files).map(async file => {
     const reader = new FileReader();
-      reader.onload = async function(e) {
-        const img = await faceapi.fetchImage(e.target.result);
-        const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
-        descriptions.push(detections.descriptor);
-      };
-  })
-    labelDescriptor = new faceapi.LabeledFaceDescriptors(label, descriptions);
-    LabeledFaceDescriptors.push(labelDescriptor);
-    faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
+    reader.onload = async function (e) {
+      const img = await faceapi.fetchImage(e.target.result);
+      const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
+      descriptions.push(detections.descriptor);
+    };
+    reader.readAsDataURL(file); // initiate file reading
+  }));
+
+  labelDescriptor = new faceapi.LabeledFaceDescriptors(label, descriptions);
+  LabeledFaceDescriptors.push(labelDescriptor);
+  faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
 }
