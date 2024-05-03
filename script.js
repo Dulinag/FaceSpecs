@@ -96,18 +96,18 @@ video.addEventListener('play', async () => {
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
 
     // Draw expressions (happy or sad) for each detected face
-    resizedDetections.forEach(detection => {
-      const { expressions } = detection;
-      const textY = detection.detection.box.top - 45; // Adjust the vertical position of the text
-      const textX = detection.detection.box.right; // Position the text to the right side
-      const expressionText = expressions.happy > expressions.sad ? 'Happy' : 'Sad';
+    // resizedDetections.forEach(detection => {
+    //   const { expressions } = detection;
+    //   const textY = detection.detection.box.top - 45; // Adjust the vertical position of the text
+    //   const textX = detection.detection.box.right; // Position the text to the right side
+    //   const expressionText = expressions.happy > expressions.sad ? 'Happy' : 'Sad';
 
-      new faceapi.draw.DrawTextField(
+    //   new faceapi.draw.DrawTextField(
         
-        [expressionText],
-        { x: textX, y: textY }
-      ).draw(canvas);
-    });
+    //     [expressionText],
+    //     { x: textX, y: textY }
+    //   ).draw(canvas);
+    // });
 
     // Draw expressions (happy or sad) for each detected face
     if (results){
