@@ -22,6 +22,16 @@
       position: absolute;
     }
   </style>
+
+
+<script>
+
+
+  function clearForm() {
+    document.getElementById("textInput").value = ""; 
+    document.getElementById("imageInput").value = ""; 
+  }
+</script>
 </head>
 <body>
   <form id="inputForm">
@@ -30,6 +40,7 @@
     <input type="file" id="imageInput" name="imageInput" accept="image/*" multiple>
     <!-- <div id="imagePreviews"></div> -->
     <button type="button" onclick="addEntry()">Add Entry</button>
+    <button type="button" onclick="clearForm()">Clear Form</button> <!-- Clear Form button -->
     <!-- <button type="submit" onclick="addEntry()">Submit</button> -->
   </form>
   <video id="video" width="720" height="560" autoplay muted></video>
