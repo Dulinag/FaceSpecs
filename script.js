@@ -31,6 +31,8 @@ function calculateSmileScore(detection) {
   return smileScore;
 }
 
+let LabeledFaceDescriptors = [];
+let faceMatcher = null;
 
 // Second block of code
 video.addEventListener('play', async () => {
@@ -39,10 +41,13 @@ video.addEventListener('play', async () => {
   const displaySize = { width: video.width, height: video.height };
   faceapi.matchDimensions(canvas, displaySize);
 
-  const LabeledFaceDescriptors = await loadLabeledImages();
-  const faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
+  // let LabeledFaceDescriptors = await loadLabeledImages();
+  // let faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
 
   setInterval(async () => {
+    let rect = video.getBoundingClientRect();
+    canvas.style.top = rect.top + 'px';
+    canvas.style.left = rect.left + 'px';
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
                                      .withFaceLandmarks()
                                      .withFaceExpressions()
@@ -51,7 +56,9 @@ video.addEventListener('play', async () => {
 
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
 
-    const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor));
+    let results = null;
+    if (faceMatcher)
+      results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor));
 
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 
@@ -103,28 +110,35 @@ video.addEventListener('play', async () => {
     });
 
     // Draw expressions (happy or sad) for each detected face
-    resizedDetections.forEach((detection, i) => {
-      const box = detection.detection.box;
-      new faceapi.draw.DrawBox(box, { label: results[i].toString() }).draw(canvas);
-    });
+    if (results){
+      resizedDetections.forEach((detection, i) => {
+        const box = detection.detection.box;
+        new faceapi.draw.DrawBox(box, { label: results[i].toString() }).draw(canvas);
+      });
+    }
 
   }, 100);
 
 });
 
-// This is a really bad way of loading the labeled images
-function loadLabeledImages() {
-  const labels = ['Anthony'];
-  return Promise.all(
-    labels.map(async label => {
-      const descriptions = []
-      for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`/labeled_images/${label}/${i}.jpg`);
-        const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
-        descriptions.push(detections.descriptor);
-      }
+async function addEntry() {
+  const imageInput = document.getElementById('imageInput');
+  const label = document.getElementById('textInput').value;
+  const descriptions = [];
+  let labelDescriptor = null;
 
-      return new faceapi.LabeledFaceDescriptors(label, descriptions);
-    })
-  )
+  // Create image previews
+  await Promise.all(Array.from(imageInput.files).map(async file => {
+    const reader = new FileReader();
+    reader.onload = async function (e) {
+      const img = await faceapi.fetchImage(e.target.result);
+      const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor();
+      descriptions.push(detections.descriptor);
+    };
+    reader.readAsDataURL(file); // initiate file reading
+  }));
+
+  labelDescriptor = new faceapi.LabeledFaceDescriptors(label, descriptions);
+  LabeledFaceDescriptors.push(labelDescriptor);
+  faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
 }
