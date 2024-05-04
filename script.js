@@ -142,3 +142,18 @@ async function addEntry() {
   LabeledFaceDescriptors.push(labelDescriptor);
   faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
 }
+
+function clearForm() {
+  document.getElementById("textInput").value = ""; 
+  document.getElementById("imageInput").value = ""; 
+}
+
+function onSubmit(event) {
+  event.preventDefault();
+
+  addEntry();
+  clearForm();
+}
+
+let form = document.getElementById("inputForm");
+form.addEventListener("submit", onSubmit)
