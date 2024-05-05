@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <script defer src="face-api.min.js"></script>
-  <script defer src="script.js"></script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    canvas {
-      position: absolute;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to FaceSpecs</title>
+<link rel="stylesheet" href="home.css">
 </head>
 <body>
-  <form id="inputForm">
-    <label for="textInput">Enter a string:</label>
-    <input type="text" id="textInput" name="textInput">
-    <input type="file" id="imageInput" name="imageInput" accept="image/*" multiple>
-    <button type="submit">Add Entry</button>
-  </form>
-  <video id="video" width="720" height="560" autoplay muted></video>
+  <div class="homepage-container">
+    <header>
+      <h1>Welcome to FaceSpecs!</h1>
+    </header>
+    <main>
+      <section class="intro">
+        <h2>Discover the future of facial recognition technology</h2>
+        <p>FaceSpecs is an innovative web application that uses real-time facial recognition to provide insights into age, gender, emotion, and more. Experience our cutting-edge technology and see how it can enhance your digital interactions.</p>
+      </section>
+      <section class="link-to-app">
+        <a href="app.html" class="app-link-button">Try FaceSpecs Now</a>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 FaceSpecs. All rights reserved.</p>
+    </footer>
+  </div>
+  
+ 
 </body>
 </html>

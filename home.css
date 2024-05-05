@@ -1,0 +1,99 @@
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: #50b2c0;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #aaa;
+}
+
+main {
+  margin-top: 20px;
+}
+
+#video-container {
+  position: relative;
+  width: 720px;
+  border: 5px solid #50b2c0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.filter-btn {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 1em;
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: #50b2c0;
+}
+
+.homepage-container {
+display: flex;
+flex-direction: column;
+justify-content: center; /* Center content vertically */
+height: 100vh; /* Take full height of the viewport */
+text-align: center; /* Center text horizontally */
+}
+
+header, footer {
+margin-bottom: 20px; /* Add some space around header and footer */
+}
+
+.intro {
+margin: 20px 0; /* Add vertical spacing around intro section */
+}
+
+.app-link-button {
+display: inline-block;
+background-color: #50b2c0; /* Vibrant button color */
+color: #ffffff;
+text-decoration: none;
+padding: 15px 30px;
+border-radius: 5px;
+font-size: 18px;
+transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover */
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.app-link-button:hover {
+background-color: #1DA1F2; /* Change color on hover */
+transform: scale(1.05); /* Slight increase in size */
+}
