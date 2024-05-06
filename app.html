@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>FaceSpecs - Real-Time Facial Recognition</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="face-api.min.js"></script>
+<script defer src="script.js"></script>
+<style>
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  #app-header {
+    text-align: center;
+    
+  }
+  
+  #app-header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    color: #50b2c0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  #app-header p {
+    font-size: 1.4em;
+    color: #ccc;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  #video-container {
+  position: relative;
+  width: 720px;
+  border: 5px solid #50b2c0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+  
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  form#inputForm {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  #inputForm input[type="text"], #inputForm input[type="file"], #inputForm button {
+    padding: 10px;
+    margin: 5px;
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #50b2c0;
+    border-radius: 5px;
+  }
+
+  #inputForm button, #backButton {
+    background-color: #50b2c0;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    
+  }
+
+  #inputForm button:hover, #backButton:hover {
+    background-color: #1DA1F2;
+    transform: scale(1.05);
+  }
+
+  #backButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#backButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50; 
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#backButton:hover {
+  background-color: #45a049; 
+}
+
+
+</style>
+</head>
+<body>
+  <header id="app-header">
+    <h1>FaceSpecs</h1>
+    <p>Try our Real-Time Face Attribute Recognition right now!</p>
+  </header>
+  <main>
+    <div id="video-container">
+      <video id="video" width="720" height="560" autoplay muted></video>
+    </div>
+    <form id="inputForm">
+      <label for="textInput">Enter A Name: </label>
+      <input type="text" id="textInput" name="textInput">
+      <input type="file" id="imageInput" name="imageInput" accept="image/*" multiple>
+      <button type="submit">Add Entry</button>
+    </form>
+    <div id="backButtonContainer">
+
+    
+    <button id="backButton" onclick="location.href='index.html'">Back to Home</button>
+    </div>
+  </main>
+</body>
+</html>
