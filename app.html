@@ -27,17 +27,15 @@
   
   #app-header h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 2.8em;
     color: #50b2c0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   
   #app-header p {
-    font-size: 1.2em;
-    color: #aaa;
-  }
-  
-  #app-main {
-    margin-top: 20px;
+    font-size: 1.4em;
+    color: #ccc;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   }
   
   #video-container {
@@ -51,12 +49,6 @@
     width: 100%;
     height: auto;
     display: block;
-  }
-  
-  #controls {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
   }
   
   form#inputForm {
@@ -75,33 +67,22 @@
     border-radius: 5px;
   }
 
-  #inputForm button {
+  #inputForm button, #backButton {
     background-color: #50b2c0;
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
   }
 
-  #inputForm button:hover {
+  #inputForm button:hover, #backButton:hover {
     background-color: #1DA1F2;
     transform: scale(1.05);
   }
 
-  #app-header h1 {
-  margin: 0;
-  font-size: 2.8em; /* Slightly larger */
-  color: #50b2c0; /* Vibrant teal color */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
-}
-
-#app-header p {
-  font-size: 1.4em; /* Larger for emphasis */
-  color: #ccc; /* Lighter shade for contrast */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Consistent style with header */
-}
-
+  #backButton {
+    margin-top: 20px;
+  }
 </style>
-
 </head>
 <body>
   <header id="app-header">
@@ -109,25 +90,16 @@
     <p>Try our Real-Time Face Attribute Recognition right now!</p>
   </header>
   <main>
-   
     <div id="video-container">
       <video id="video" width="720" height="560" autoplay muted></video>
-      <div id="controls">
-
-
-        
-        <!-- Controls can be added here if needed -->
-      </div>
-      
     </div>
-    <header id="app-header"> <p>Try out our Individual Face Detector </p> </header>
-   
     <form id="inputForm">
       <label for="textInput">Enter A Name: </label>
       <input type="text" id="textInput" name="textInput">
       <input type="file" id="imageInput" name="imageInput" accept="image/*" multiple>
       <button type="submit">Add Entry</button>
     </form>
+    <button id="backButton" onclick="location.href='index.html'">Back to Home</button>
   </main>
 </body>
 </html>
