@@ -19,10 +19,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
   }
   
   #app-header {
     text-align: center;
+    
   }
   
   #app-header h1 {
@@ -39,11 +41,18 @@
   }
   
   #video-container {
-    position: relative;
-    width: 720px;
-    border: 5px solid #50b2c0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  }
+  position: relative;
+  width: 720px;
+  border: 5px solid #50b2c0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
   
   video {
     width: 100%;
@@ -72,6 +81,7 @@
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
+    
   }
 
   #inputForm button:hover, #backButton:hover {
@@ -79,9 +89,29 @@
     transform: scale(1.05);
   }
 
-  #backButton {
-    margin-top: 20px;
-  }
+  #backButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#backButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50; 
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#backButton:hover {
+  background-color: #45a049; 
+}
+
+
 </style>
 </head>
 <body>
@@ -99,7 +129,11 @@
       <input type="file" id="imageInput" name="imageInput" accept="image/*" multiple>
       <button type="submit">Add Entry</button>
     </form>
+    <div id="backButtonContainer">
+
+    
     <button id="backButton" onclick="location.href='index.html'">Back to Home</button>
+    </div>
   </main>
 </body>
 </html>
