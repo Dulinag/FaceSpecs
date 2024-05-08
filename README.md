@@ -3,10 +3,12 @@
 <br>
 <br>
 
-<div align="center">
-<img width="215" alt="Screenshot 2024-05-07 at 11 22 00 PM" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/0e3800bc-eea7-4866-bdde-81ff49df3af2">
-(https://face-specs.vercel.app/)
-</div>
+<!-- HTML -->
+<p align="center">
+  <a href="https://face-specs.vercel.app/">
+    <img width="215" alt="Screenshot 2024-05-07 at 11 22 00 PM" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/0e3800bc-eea7-4866-bdde-81ff49df3af2">
+  </a>
+</p>
 
 
 ---
@@ -103,11 +105,59 @@ form.addEventListener("submit", onSubmit)
 ---
 
 ### Meet the Team
+<!-- HTML -->
+<table>
+  <tr>
+    <td>
+      <img width="215" height="215" alt="Dulina headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/00881876-4016-4c3c-9452-9d75da899843">
+      <p>Dulina Gunasekara </p>
+    </td>
+    <td>
+      <img width="215" height="215" alt="Anthony headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/ba82d1c8-a987-4d3f-b646-206dc04eacc1">
+      <p>Anthony Poon</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img width="215" height="215" alt="Nicklaus headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
+      <p>Nicklaus Yao</p>
+    </td>
+    <td>
+        <img width="215" height="215" alt="Mahathir headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
+      <p>Mahathir Rojan</p>
+    </td>
+  </tr>
+</table>
+
+<br>
+<br>
 Here is a photograph of the team alongside the professor using FaceSpecs:
 
-[insert photograph here]
+<table>
+  <tr>
+    <td>
+      <img width="215" height="215" alt="Dulina Facespecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/a064f9f2-0a3d-4b74-82fa-4ebe56b9042e">
+      <p>Dulina Gunasekara</p>
+    </td>
+    <td>
+      <img width="215" height="215" alt="Anthony Facespecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/ba82d1c8-a987-4d3f-b646-206dc04eacc1">
+      <p>Anthony Poon</p>
+    </td>
+    <td>
+      <img width="215" height="215" alt="Professor Facespecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
+      <p>Professor Stamos</p>
+    </td>
+    <td>
+      <img width="215" height="215" alt="Nicklaus Facespecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/e8fa5954-0293-429c-80a1-3797b49547d3">
+      <p>Nicklaus Yao</p>
+    </td>
+    <td>
+    <img width="215" height="215" alt="Mahathir FaceSpecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
+      <p>Mahathir Rojan</p>
+    </td>
+  </tr>
+</table>
 
-[insert faceaps photograph here]
 ---
 
 ### Conclusion
