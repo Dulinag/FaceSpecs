@@ -109,25 +109,26 @@ form.addEventListener("submit", onSubmit)
 <table>
   <tr>
     <td>
-      <img width="215" height="215" alt="Dulina headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/00881876-4016-4c3c-9452-9d75da899843">
+      <img width="200" height="215" alt="Dulina headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/00881876-4016-4c3c-9452-9d75da899843">
       <p>Dulina Gunasekara </p>
     </td>
     <td>
-      <img width="215" height="215" alt="Anthony headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/ba82d1c8-a987-4d3f-b646-206dc04eacc1">
+      <img width="200" height="215" alt="Anthony headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/ba82d1c8-a987-4d3f-b646-206dc04eacc1">
       <p>Anthony Poon</p>
     </td>
   </tr>
   <tr>
     <td>
-      <img width="215" height="215" alt="Nicklaus headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
+      <img width="200" height="215" alt="Nicklaus headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
       <p>Nicklaus Yao</p>
     </td>
     <td>
-        <img width="215" height="215" alt="Mahathir headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
+        <img width="200" height="215" alt="Mahathir headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/35049b74-2148-40e5-94be-efc643a8110a">
       <p>Mahathir Rojan</p>
     </td>
   </tr>
 </table>
+
 
 <br>
 <br>
@@ -152,7 +153,7 @@ Here is a photograph of the team alongside the professor using FaceSpecs:
       <p>Nicklaus Yao</p>
     </td>
     <td>
-    <img width="215" height="215" alt="Mahathir FaceSpecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
+    <img width="215" height="215" alt="Mahathir FaceSpecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/ac33d732-8774-4012-85bd-413f0574a1f0">
       <p>Mahathir Rojan</p>
     </td>
   </tr>
