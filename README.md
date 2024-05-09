@@ -44,8 +44,15 @@ FaceSpecs will employ the following methodology to achieve its objectives:
 - **Face Detection**: tinyFaceDetector
     - Built based on the YOLO model (paper referenced below) with depthwise separable convolutional layers to shrink model sizes
       - YOLO model is built on the idea that the model only views the image once to detect multiple objects via bounding boxes
-      - YOLO is created on Darknet(open-sourced ANN library)
-    - Based on faceapi.js, this detection model works better with faceLandmark68Net and best for mobile and web deployment
+      - YOLO is created on Darknet(open-sourced ANN library) and is the name of the method of detecting faces.
+    - Based on faceapi.js, this detection model works better with faceLandmark68Net and best for mobile and web deployment.
+
+This is a sample image of what using the YOLO method in a Model looks like:
+<div align="center">
+<img width="512" alt="Screenshot 2024-05-07 at 8 50 52 AM" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/a12612ad-6302-4195-ae2d-f70297276b33">
+</div>
+Source: RidgeRun Developer
+<br>
 - **Landmark Detection**: faceLandmark68Net
     - CNN trained similarly to Dlib's 68 Points Facial Landmark
 <div align="center">
@@ -62,15 +69,33 @@ FaceSpecs will employ the following methodology to achieve its objectives:
         - Sad
         - Neutral
         - Surprised
+     
+
 - **Age Estimation + Gender Classification**: ageGenderNet
     - Built Similarly to Xception
       - Inception Modules (parallel convolution branches with varying filter values)
       - Bottleneck Layers (1 X 1 convolutions to reduce computational complexity and number of parameters)
+
+This is an example of Xception Architecture:
+<div align="center">
+<img width="600" height="256" alt="Screenshot 2024-05-07 at 8 50 52 AM" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/1b8a2571-3125-4540-a208-e3b67f090076">
+</div>
+Source: Towards Data Science
+<br>
+<br>
 - **Facial Recognition**: faceRecognitionNet
     - Based on a ResNet 34 Architecture
       - ResNet refers to the use of Residual Units and Skip Connections
       - 34 refers to the number of Convolutional Layers within the model
     - Has the ability to recognize any inputted face - without being trained on the face
+ 
+This is an example of ResNet 34 Architecture:
+<div align="center">
+<img width="900" alt="Screenshot 2024-05-07 at 8 50 52 AM" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/12e130fe-9ecd-4e5b-80d3-c0cb7b97377f">
+</div>
+Source: Medium
+
+<br>
 
 #### Note: All models are built using separable convolutional layers which enable model sizes to shrink considerably compared to typical 2D convolutional layers.
 ---
@@ -98,6 +123,7 @@ function startVideo() {
 #### Localized Uploading:
 
 All photos uploaded for recognition is solely locally stored and removed upon refreshing the website for both privacy and storage reasons.
+You may upload many photos under one label to get better results for recognition.
 ```javascript
 let form = document.getElementById("inputForm");
 form.addEventListener("submit", onSubmit)
@@ -109,21 +135,21 @@ form.addEventListener("submit", onSubmit)
 <table>
   <tr>
     <td>
-      <img width="200" height="215" alt="Dulina headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/00881876-4016-4c3c-9452-9d75da899843">
+      <img width="225" height="215" alt="Dulina headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/00881876-4016-4c3c-9452-9d75da899843">
       <p>Dulina Gunasekara </p>
     </td>
     <td>
-      <img width="200" height="215" alt="Anthony headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/ba82d1c8-a987-4d3f-b646-206dc04eacc1">
+      <img width="225" height="215" alt="Anthony headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/ba82d1c8-a987-4d3f-b646-206dc04eacc1">
       <p>Anthony Poon</p>
     </td>
   </tr>
   <tr>
     <td>
-      <img width="200" height="215" alt="Nicklaus headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
+      <img width="225" height="215" alt="Nicklaus headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
       <p>Nicklaus Yao</p>
     </td>
     <td>
-        <img width="200" height="215" alt="Mahathir headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/35049b74-2148-40e5-94be-efc643a8110a">
+        <img width="225" height="215" alt="Mahathir headshot" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/35049b74-2148-40e5-94be-efc643a8110a">
       <p>Mahathir Rojan</p>
     </td>
   </tr>
@@ -141,11 +167,11 @@ Here is a photograph of the team alongside the professor using FaceSpecs:
       <p>Dulina Gunasekara</p>
     </td>
     <td>
-      <img width="215" height="215" alt="Anthony Facespecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/ba82d1c8-a987-4d3f-b646-206dc04eacc1">
+      <img width="215" height="215" alt="Anthony Facespecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8ed371bd-4563-470e-a841-2af3e7d36833">
       <p>Anthony Poon</p>
     </td>
     <td>
-      <img width="215" height="215" alt="Professor Facespecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/8717545e-3741-476a-b08f-f79a1288daee">
+      <img width="215" height="215" alt="Professor Facespecs" src="https://github.com/Dulinag/FaceSpecs/assets/92593778/359526f3-1e4c-4db6-a49d-f2fabc096193">
       <p>Professor Stamos</p>
     </td>
     <td>
