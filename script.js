@@ -38,14 +38,15 @@ let faceMatcher = null;
 video.addEventListener('play', async () => {
   const canvas = faceapi.createCanvasFromMedia(video);
   document.body.append(canvas);
-  const displaySize = { width: video.width, height: video.height };
+  let rect = video.getBoundingClientRect();
+  const displaySize = { width: rect.width, height: rect.height };
   faceapi.matchDimensions(canvas, displaySize);
 
   // let LabeledFaceDescriptors = await loadLabeledImages();
   // let faceMatcher = new faceapi.FaceMatcher(LabeledFaceDescriptors, 0.6);
 
   setInterval(async () => {
-    let rect = video.getBoundingClientRect();
+    rect = video.getBoundingClientRect();
     canvas.style.top = rect.top + 'px';
     canvas.style.left = rect.left + 'px';
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
